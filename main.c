@@ -52,5 +52,52 @@ int main() {
     free(q);
 
     printf("\nSimulation du trafic terminée. Vérifiez 'traffic_log.txt' pour le log.\n");
+
+    // Create a multi-lane system with 4 lanes
+    MultiLaneSystem* system = createMultiLaneSystem(4);
+    
+    // Create vehicles with different directions
+    Vehicule* car1 = createVehicule(1, CAR, 10);
+    Vehicule* bus1 = createVehicule(2, BUS, 15);
+    Vehicule* emergency1 = createVehicule(3, Emergency, 20);
+    Vehicule* bike1 = createVehicule(4, BIKE, 5);
+    Vehicule* car2 = createVehicule(5, CAR, 25);
+    Vehicule* bus2 = createVehicule(6, BUS, 30);
+    
+    // Add vehicles to different lanes
+    addVehicleToLane(system, car1, 'N', logFile);      // North lane
+    addVehicleToLane(system, bus1, 'S', logFile);      // South lane
+    addVehicleToLane(system, emergency1, 'E', logFile); // East lane
+    addVehicleToLane(system, bike1, 'W', logFile);     // West lane
+    addVehicleToLane(system, car2, 'N', logFile);      // North lane
+    addVehicleToLane(system, bus2, 'S', logFile);      // South lane
+    
+    // Logger l'état initial
+    fprintf(logFile, "\nÉtat initial du système:\n");
+    logMultiLaneState(logFile, system);
+    
+    // Run simulation
+    simulateMultiLaneTraffic(system, 4, logFile); // Run for 4 cycles
+    
+    // Logger l'état final
+    fprintf(logFile, "\nÉtat final du système:\n");
+    logMultiLaneState(logFile, system);
+    
+    // Nettoyage
+    for(int i = 0; i < system->laneCount; i++) {
+        while(!isEmpty(system->lanes[i]->queue)) {
+            Vehicule* v = dequeue(system->lanes[i]->queue, logFile);
+            if(v != NULL) free(v);
+        }
+        free(system->lanes[i]->queue);
+        free(system->lanes[i]);
+    }
+    free(system->lanes);
+    free(system);
+    
+    fprintf(logFile, "\nFin de la session\n\n");
+    fclose(logFile);
+    
+    printf("\nSimulation terminée. Consultez traffic_log.txt pour les détails.\n");
     return 0;
 }
