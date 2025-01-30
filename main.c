@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "libraries/queue.h"
- 
+#include "queue.h"
+
 int main() {
     // Initialiser la file d'attente avec une capacité maximale de 5
-    Queue* q = createQueue(5);
+    Queue* q = createQueue(8); 
 
     // Ouvrir le fichier de log pour enregistrer les événements
     FILE* logFile = initializeLogFile();
@@ -14,12 +14,16 @@ int main() {
     Vehicule* bus = createVehicule(2, BUS, 15);
     Vehicule* emergency = createVehicule(3, Emergency, 20);
     Vehicule* bike = createVehicule(4, BIKE, 5);
+    Vehicule* bike_1 = createVehicule(5, BIKE, 3);
+    Vehicule* car_1 = createVehicule(6, CAR, 11);
 
     // Ajouter les véhicules à la file d'attente
     enqueue(q, car, logFile);
     enqueue(q, bus, logFile);
     enqueue(q, emergency, logFile);
     enqueue(q, bike, logFile);
+    enqueue(q, bike_1, logFile);
+    enqueue(q, car_1, logFile);
 
     // Afficher l'état initial de la file d'attente
     printf("\nÉtat initial de la file d'attente:\n");
@@ -52,6 +56,7 @@ int main() {
     free(q);
 
     printf("\nSimulation du trafic terminée. Vérifiez 'traffic_log.txt' pour le log.\n");
+    
 
     // Create a multi-lane system with 4 lanes
     MultiLaneSystem* system = createMultiLaneSystem(4);

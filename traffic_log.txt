@@ -1,0 +1,28 @@
+
+
+=================================
+Nouvelle session: Thu Jan 30 21:10:57 2025
+=================================
+
+Véhicule ID: 1 ajouté à la file d'attente (Type: 0).
+Véhicule ID: 2 ajouté à la file d'attente (Type: 1).
+Véhicule d'urgence (ID: 3) arrivé et priorisé.
+Véhicule ID: 4 ajouté à la file d'attente (Type: 2).
+Véhicule ID: 3 retiré de la file d'attente (Type: 3).
+Véhicule ID: 2 retiré de la file d'attente (Type: 1).
+Véhicule ID: 1 retiré de la file d'attente (Type: 0).
+Véhicule ID: 4 retiré de la file d'attente (Type: 2).
+
+
+=================================
+Nouvelle session: Thu Jan 30 21:13:44 2025
+=================================
+
+Véhicule ID: 1 ajouté à la file d'attente (Type: 0).
+Véhicule ID: 2 ajouté à la file d'attente (Type: 1).
+Véhicule d'urgence (ID: 3) arrivé et priorisé.
+Véhicule ID: 4 ajouté à la file d'attente (Type: 2).
+Véhicule ID: 3 retiré de la file d'attente (Type: 3).
+Véhicule ID: 2 retiré de la file d'attente (Type: 1).
+Véhicule ID: 1 retiré de la file d'attente (Type: 0).
+Véhicule ID: 4 retiré de la file d'attente (Type: 2).
